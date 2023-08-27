@@ -6,5 +6,19 @@ class Review:
           self.restaurant = restaurant
           self.rating = rating
 
-          
+     # Method to retrieve the rating of the review
+     def get_rating(self):
+          return self.rating
+     
+     # Method to retrieve the customer who left the review
+     def get_customer(self):
+          return self.customer
+     
+    # Method to retrieve the restaurant that was reviewed
+def get_restaurant(self):
+     return self.restaurant
+
+
+
+
           
