@@ -13,3 +13,7 @@ class Customer:
     # method to retrieve the family name of the customer
     def get_family_name(self):
         return self.family_name
+    # method to retrieve the full name of the customer
+    def get_full_name(self):
+        return f"{self.given_name} {self.family_name}"
+    
