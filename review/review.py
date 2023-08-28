@@ -1,3 +1,4 @@
+# Define the Review class
 class Review:
     instances = []  # Class variable to track all review instances
 
