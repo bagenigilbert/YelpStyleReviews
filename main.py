@@ -1,38 +1,44 @@
 from customer.customer import Customer
-from review.review import Review
 from restaurant.restaurant import Restaurant
 
-# Create instances
-customer1 = Customer("Gilbert", "junior")
-customer2 = Customer("terry", "williams")
+# Create customers
+customer1 = Customer("Gilbert", "williams")
+customer2 = Customer("Jane", "darius")
+customer3 = Customer("Michael", "Johnson")
 
-restaurant1 = Restaurant("amazing eats")
-restaurant2 = Restaurant("Pizza plaza")
-review1 = Review(customer1, restaurant1, 6)
-review2 = Review(customer2, restaurant2, 7)
+# Create restaurants
+restaurant1 = Restaurant("Pizza Palace")
+restaurant2 = Restaurant("Burger Haven")
+restaurant3 = Restaurant("Sushi Spot")
 
-# Use methods
-print("Customer name:", customer1.get_full_name())
-print("Restaurant name:", restaurant1.get_name())
-print("Review rating:", review1.get_rating())
+# Add reviews
+customer1.add_review(restaurant1, 4)
+customer1.add_review(restaurant2, 5)
+customer2.add_review(restaurant1, 3)
+customer2.add_review(restaurant3, 4)
+customer3.add_review(restaurant2, 2)
 
-# Adding reviews
-customer1.add_review(restaurant1, 5)
-customer2.add_review(restaurant2, 4)
+# Test methods
+print("All customers:")
+for customer in Customer.instances:
+    print(customer.get_full_name())
 
-# Display restaurant reviews
-print("\nRestaurant reviews for", restaurant1.get_name())
-for review in restaurant1.get_reviews():
-    print("- Rating:", review.get_rating())
-    print("  Customer:", review.get_customer().get_full_name())
+print("Average rating for Restaurant 2:", restaurant2.average_star_rating())
 
-print("\nRestaurant reviews for", restaurant2.get_name())
+print("Restaurant 2 reviews:")
 for review in restaurant2.get_reviews():
-    print("- Rating:", review.get_rating())
-    print("  Customer:", review.get_customer().get_full_name())
+    print(f"  Rating: {review.get_rating()} stars")
 
-# Calculating average rating
-average_rating1 = restaurant1.average_star_rating()
-average_rating2 = restaurant2.average_star_rating()
-print("\nAverage rating for", restaurant1.get_name(), ":", average_rating1)
-print("Average rating for", restaurant2.get_name(), ":", average_rating2)
+print("Customers who reviewed Restaurant 2:")
+for customer in restaurant2.get_customers():
+    print("  " + customer.get_full_name())
+
+print("Number of reviews by Customer 2:", customer2.num_reviews())
+
+found_customer = Customer.find_by_name("Jane Smith")
+print("Found customer by name:", found_customer.get_full_name() if found_customer else "Not found")
+
+customers_with_given_name = Customer.find_all_by_given_name("John")
+print("Customers with given name 'John':")
+for customer in customers_with_given_name:
+    print("  " + customer.get_full_name())

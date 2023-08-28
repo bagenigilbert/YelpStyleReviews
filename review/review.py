@@ -1,10 +1,12 @@
-# Define the Review class
 class Review:
+    instances = []  # Class variable to track all review instances
+
     # Constructor to initialize a review with a customer, restaurant, and rating
     def __init__(self, customer, restaurant, rating):
-        self.customer = customer  # The customer who left the review
-        self.restaurant = restaurant  # The restaurant that was reviewed
-        self.rating = rating  # The rating given to the restaurant
+        self.customer = customer
+        self.restaurant = restaurant
+        self.rating = rating
+        Review.instances.append(self)  # Add the review instance to the instances list
 
     # Method to retrieve the rating of the review
     def get_rating(self):

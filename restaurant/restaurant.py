@@ -1,9 +1,11 @@
-# Define the Restaurant class
 class Restaurant:
-    # Constructor to initialize the restaurant object with a name
+    instances = []  # Class variable to track all restaurant instances
+
+    # Constructor to initialize a restaurant with a given name
     def __init__(self, name):
         self.name = name
-        self.reviews = []  # A list to store reviews left for this restaurant
+        self.reviews = []  # List to store reviews left for this restaurant
+        Restaurant.instances.append(self)  # Add the restaurant instance to the instances list
 
     # Method to retrieve the name of the restaurant
     def get_name(self):
@@ -11,7 +13,7 @@ class Restaurant:
 
     # Method to add a review to the restaurant's reviews list
     def add_review(self, review):
-        self.reviews.append(review)
+        self.reviews.append(review)  # Add the review to the restaurant's reviews list
 
     # Method to retrieve the list of reviews for this restaurant
     def get_reviews(self):
